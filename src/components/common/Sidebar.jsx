@@ -9,7 +9,7 @@ const SIDEBAR_ITEMS = [
 	{ name: "Risk Mitigation", icon: ShoppingBag, color: "#8B5CF6", href: "/products" },
 	{ name: "Analytics", icon: TrendingUp, color: "#3B82F6", href: "/analytics" },
 	{ name: "Potential Risk", icon: Users, color: "#EC4899", href: "/users" },
-	{ name: "Risk Register", icon: DollarSign, color: "#10B981", href: "/sales" },
+	{ name: "Risk Register", icon: DollarSign, color: "#10B981", href: "/riskreg" },
 	// { name: "Orders", icon: ShoppingCart, color: "#F59E0B", href: "/orders" },
 	// { name: "Settings", icon: Settings, color: "#6EE7B7", href: "/settings" },
 ];
