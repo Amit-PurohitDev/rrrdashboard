@@ -1,18 +1,6 @@
 import { motion } from "framer-motion";
 
 import Header from "../components/common/Header";
-import StatCard from "../components/common/StatCard";
-import { CreditCard, DollarSign, ShoppingCart, TrendingUp } from "lucide-react";
-import SalesOverviewChart from "../components/sales/SalesOverviewChart";
-import SalesByCategoryChart from "../components/sales/SalesByCategoryChart";
-import DailySalesTrend from "../components/sales/DailySalesTrend";
-
-const salesStats = {
-	totalRevenue: "$1,234,567",
-	averageOrderValue: "$78.90",
-	conversionRate: "3.45%",
-	salesGrowth: "12.3%",
-};
 
 const RiskReg = () => {
 	return (
@@ -20,7 +8,7 @@ const RiskReg = () => {
 			<Header title='Risk Register' />
 
 			<main className='mx-auto py-6 px-1 lg:px-2'>
-				{/* SALES STATS */}
+				{/* Effort STATS */}
 				<motion.div
 					className='grid grid-cols-1 mb-8'
 					initial={{ opacity: 0, y: 20 }}

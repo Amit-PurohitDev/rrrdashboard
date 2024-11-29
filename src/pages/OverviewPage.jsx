@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 import Header from "../components/common/Header";
 import StatCard from "../components/common/StatCard";
-import SalesOverviewChart from "../components/overview/SalesOverviewChart";
+import EffortOverviewChart from "../components/overview/SalesOverviewChart";
 import CategoryDistributionChart from "../components/overview/CategoryDistributionChart";
 import SalesChannelChart from "../components/overview/SalesChannelChart";
 
@@ -20,16 +20,16 @@ const OverviewPage = () => {
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 1 }}
 				>
-					<StatCard name='Total Sales' icon={Zap} value='$12,345' color='#6366F1' />
-					<StatCard name='New Users' icon={Users} value='1,234' color='#8B5CF6' />
-					<StatCard name='Total Products' icon={ShoppingBag} value='567' color='#EC4899' />
-					<StatCard name='Conversion Rate' icon={BarChart2} value='12.5%' color='#10B981' />
+					<StatCard name='Compliance' icon={Zap} value='$12,345' color='#6366F1' />
+					<StatCard name='Thresholds' icon={Users} value='1,234' color='#8B5CF6' />
+					<StatCard name='Total Project' icon={ShoppingBag} value='567' color='#EC4899' />
+					<StatCard name='Potential Risk Rate' icon={BarChart2} value='12.5%' color='#10B981' />
 				</motion.div>
 
 				{/* CHARTS */}
 
 				<div className='grid grid-cols-1 lg:grid-cols-2 gap-8'>
-					<SalesOverviewChart />
+					<EffortOverviewChart />
 					<CategoryDistributionChart />
 					<SalesChannelChart />
 				</div>

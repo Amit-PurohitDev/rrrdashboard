@@ -1,17 +1,17 @@
 import { motion } from "framer-motion";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 
-const dailySalesData = [
-	{ name: "Mon", sales: 1000 },
-	{ name: "Tue", sales: 1200 },
-	{ name: "Wed", sales: 900 },
-	{ name: "Thu", sales: 1100 },
-	{ name: "Fri", sales: 1300 },
-	{ name: "Sat", sales: 1600 },
-	{ name: "Sun", sales: 1400 },
+const dailyEffortData = [
+	{ name: "Mon", Effort: 1000 },
+	{ name: "Tue", Effort: 1200 },
+	{ name: "Wed", Effort: 900 },
+	{ name: "Thu", Effort: 1100 },
+	{ name: "Fri", Effort: 1300 },
+	{ name: "Sat", Effort: 1600 },
+	{ name: "Sun", Effort: 1400 },
 ];
 
-const DailySalesTrend = () => {
+const DailyEffortTrend = () => {
 	return (
 		<motion.div
 			className='bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-lg rounded-xl p-6 border border-gray-700'
@@ -19,11 +19,11 @@ const DailySalesTrend = () => {
 			animate={{ opacity: 1, y: 0 }}
 			transition={{ delay: 0.4 }}
 		>
-			<h2 className='text-xl font-semibold text-gray-100 mb-4'>Daily Sales Trend</h2>
+			<h2 className='text-xl font-semibold text-gray-100 mb-4'>Daily Progress</h2>
 
 			<div style={{ width: "100%", height: 300 }}>
 				<ResponsiveContainer>
-					<BarChart data={dailySalesData}>
+					<BarChart data={dailyEffortData}>
 						<CartesianGrid strokeDasharray='3 3' stroke='#374151' />
 						<XAxis dataKey='name' stroke='#9CA3AF' />
 						<YAxis stroke='#9CA3AF' />
@@ -34,11 +34,11 @@ const DailySalesTrend = () => {
 							}}
 							itemStyle={{ color: "#E5E7EB" }}
 						/>
-						<Bar dataKey='sales' fill='#10B981' />
+						<Bar dataKey='Effort' fill='#10B981' />
 					</BarChart>
 				</ResponsiveContainer>
 			</div>
 		</motion.div>
 	);
 };
-export default DailySalesTrend;
+export default DailyEffortTrend;

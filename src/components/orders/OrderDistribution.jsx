@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from "recharts";
 
-const orderStatusData = [
-	{ name: "Pending", value: 30 },
-	{ name: "Processing", value: 45 },
-	{ name: "Shipped", value: 60 },
-	{ name: "Delivered", value: 120 },
+const projectRiskAnalysisData = [
+	{ name: "Low Risk", value: 30 },
+	{ name: "Moderate Risk", value: 45 },
+	{ name: "High Risk", value: 60 },
+	{ name: "Critical Risk", value: 120 },
 ];
 const COLORS = ["#FF6B6B", "#4ECDC4", "#45B7D1", "#FED766", "#2AB7CA"];
 
@@ -22,7 +22,7 @@ const OrderDistribution = () => {
 				<ResponsiveContainer>
 					<PieChart>
 						<Pie
-							data={orderStatusData}
+							data={projectRiskAnalysisData}
 							cx='50%'
 							cy='50%'
 							outerRadius={80}
@@ -30,7 +30,7 @@ const OrderDistribution = () => {
 							dataKey='value'
 							label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
 						>
-							{orderStatusData.map((entry, index) => (
+							{projectRiskAnalysisData.map((entry, index) => (
 								<Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
 							))}
 						</Pie>
