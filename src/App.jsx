@@ -9,8 +9,10 @@ import OrdersPage from "./pages/OrdersPage";
 import AnalyticsPage from "./pages/AnalyticsPage";
 import SettingsPage from "./pages/SettingsPage";
 import RiskReg from "./pages/RiskReg";
+import { useState } from "react";
 
 function App() {
+	const [riskData, setRiskData] = useState(null);
 	return (
 		<div className='flex h-screen bg-gray-900 text-gray-100 overflow-hidden'>
 			{/* BG */}
@@ -21,7 +23,7 @@ function App() {
 
 			<Sidebar />
 			<Routes>
-				<Route path='/' element={<Newreport />} />
+				<Route path='/' element={<Newreport setRiskData={setRiskData}/>} />
 				<Route path='/report' element={<OverviewPage />} />
 				<Route path='/products' element={<ProductsPage />} />
 				<Route path='/users' element={<UsersPage />} />

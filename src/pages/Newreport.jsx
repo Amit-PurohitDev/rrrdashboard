@@ -1,55 +1,62 @@
 import React, { useState } from 'react';
+import { useDropzone } from 'react-dropzone';
+import { analyzeDocument } from '../services/aiService';
 import Header from "../components/common/Header";
 
-const Newreport = () => {
-    const [file, setFile] = useState(null);
-    
-    const handleFileChange = (e) => {
-      setFile(e.target.files[0]);
-    };
-  
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      if (file) {
-        alert(`File "${file.name}" has been submitted.`);
-      } else {
-        alert("Please select a file to upload.");
-      }
-    };
+const Newreport = ({ setRiskData }) => {
+  const [file, setFile] = useState(null);  // State to store the uploaded file
+  const [loading, setLoading] = useState(false);  // State to show loading during analysis
+  const [result, setResult] = useState(null); 
+
+  // Handle file upload
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);  // Store the selected file
+  };
+
+  // Handle form submission (analyze the file)
+  const handleSubmit = async () => {
+    if (!file) {
+      alert('Please upload a PDF file!');
+      return;
+    }
+
+    setLoading(true);  // Set loading to true while the file is being analyzed
+
+    try {
+      const analysisResult = await analyzeDocument(file);  // Call the analyzeDocument function
+      setResult(analysisResult);  // Store the result of the analysis
+    } catch (error) {
+      console.error('Error submitting file:', error);
+    } finally {
+      setLoading(false);  // Reset loading state
+    }
+  };
+
   return (
-
-
-
-
-
     <div className='flex-1 overflow-auto relative z-10 bg-gray-900'>
     <Header title={"New Project"} />
 
-    <main className='max-w-7xl mx-auto py-6 px-4 lg:px-8'>
-    <div className="h-screen flex items-center justify-center">
-      <div className="p-6 rounded-lg shadow-lg w-80">
-        <h2 className="text-xl font-semibold text-center mb-4">Upload Project Document</h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <input 
-              type="file" 
-              onChange={handleFileChange} 
-              className="w-full p-2 border border-gray-300 rounded-md"
-            />
-          </div>
-          <div className="flex justify-center">
-            <button 
-              type="submit" 
-              className="px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
-            >
-              Submit
-            </button>
-          </div>
-        </form>
+    <div>
+      <div>
+        <input
+          type="file"
+          accept=".pdf"  // Accept only PDF files
+          onChange={handleFileChange}
+        />
       </div>
+      <button onClick={handleSubmit} disabled={loading}>
+        {loading ? 'Analyzing...' : 'Submit for Sentiment Analysis'}
+      </button>
+
+      {result && (
+        <div>
+          <h3>Analysis Result</h3>
+          <pre>{JSON.stringify(result, null, 2)}</pre>  {/* Display result as JSON */}
+        </div>
+      )}
     </div>
-    </main>
-</div>
+     
+    </div>
   )
 }
 
